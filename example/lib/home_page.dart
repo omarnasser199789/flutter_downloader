@@ -121,8 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
             final task = item.task;
             if (task == null) {
               return Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 child: Text(
                   item.name!,
                   style: const TextStyle(
@@ -137,28 +136,31 @@ class _MyHomePageState extends State<MyHomePage> {
             return DownloadListItem(
               data: item,
               onTap: (task) async {
-                final success = await _openDownloadedFile(task);
-                if (!success) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text('Cannot open this file'),
-                    ),
-                  );
-                }
+                print("vjkndjn");
+                print(task);
+                // final success = await _openDownloadedFile(task);
+                // if (!success) {
+                //   ScaffoldMessenger.of(context).showSnackBar(
+                //     const SnackBar(
+                //       content: Text('Cannot open this file'),
+                //     ),
+                //   );
+                // }
               },
               onActionTap: (task) {
-                if (task.status == DownloadTaskStatus.undefined) {
-                  _requestDownload(task);
-                } else if (task.status == DownloadTaskStatus.running) {
-                  _pauseDownload(task);
-                } else if (task.status == DownloadTaskStatus.paused) {
-                  _resumeDownload(task);
-                } else if (task.status == DownloadTaskStatus.complete ||
-                    task.status == DownloadTaskStatus.canceled) {
-                  _delete(task);
-                } else if (task.status == DownloadTaskStatus.failed) {
-                  _retryDownload(task);
-                }
+                print(task);
+                // if (task.status == DownloadTaskStatus.undefined) {
+                //   _requestDownload(task);
+                // } else if (task.status == DownloadTaskStatus.running) {
+                //   _pauseDownload(task);
+                // } else if (task.status == DownloadTaskStatus.paused) {
+                //   _resumeDownload(task);
+                // } else if (task.status == DownloadTaskStatus.complete ||
+                //     task.status == DownloadTaskStatus.canceled) {
+                //   _delete(task);
+                // } else if (task.status == DownloadTaskStatus.failed) {
+                //   _retryDownload(task);
+                // }
               },
               onCancel: _delete,
             );
